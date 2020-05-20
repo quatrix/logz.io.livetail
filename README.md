@@ -1,4 +1,4 @@
-# logz.io live tail cli
+# logz.io live tail cli (UNOFFICIAL)
 
 CLI tool to get a live tail of log events from logz.io Live Tail service
 
@@ -52,13 +52,13 @@ Optional arguments:
 
 ### limitations
 
-*. corrently only `parsed` mode is implemented (but very easy to implement regex mode)
-*. if there are no new messages, it will quit, need to add some polling mechanism (logs.io actually send an event when you should poll next)
-*. `is` some field
-*. `is_not` some field
-*. missing: exists
-*. missing: not_exists
-*. etc...
+* corrently only `parsed` mode is implemented (but very easy to implement regex mode)
+* if there are no new messages, it will quit, need to add some polling mechanism (logs.io actually send an event when you should poll next)
+* `is` some field
+* `is_not` some field
+* missing: exists
+* missing: not_exists
+* etc...
 
 ### output fields
 by default the output fields are `@timestamp` and `message`, you can specify multiple `-o field` and these fields will be added
