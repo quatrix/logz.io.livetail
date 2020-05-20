@@ -16,7 +16,9 @@ since i didn't implement login yet, you'll need to get the token manually:
 1. find a request that's called `live-tail`
 1. from the headers copy the `X-Auth-Token` header
 1. from the cookie copy the `logz-lastAuthToken` field
-1. create a json file with the following format and save it as `account_name.json` (replace place holders with your values) ```
+1. create a json file with the following format and save it as `account_name.json` (replace place holders with your values) 
+
+```json
 {
     "last_auth_token":  "{logz-lastAuthToken}"
     "x_auth_token": "{X-Auth-Token}"
@@ -24,6 +26,8 @@ since i didn't implement login yet, you'll need to get the token manually:
 ```
 
 ### help
+
+
 ```
 # node src/livetail.js --help
 
@@ -60,15 +64,18 @@ Optional arguments:
 by default the output fields are `@timestamp` and `message`, you can specify multiple `-o field` and these fields will be added
 (when you add fields, you need to also add message)
 
-```
+
+```bash
 node src/livetail.js -c accounts/my_account.json -o module -o env -o level
 ```
+
 
 #### is_not
 
 to filter out messages that have specific values in a given field
 
-```
+
+```bash
 node src/livetail.js -c accounts/my_account.json --is_not env:prod
 
 
@@ -76,10 +83,11 @@ node src/livetail.js -c accounts/my_account.json --is_not env:prod
 node src/livetail.js -c accounts/my_account.json --is_not env:staging,cd
 ```
 
+
 #### is
 
 same as `is_not` but reversed
 
-```
+```bash
 node src/livetail.js -c accounts/my_account.json --is env:prod
 ```
