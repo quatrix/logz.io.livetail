@@ -10,7 +10,7 @@ yarn install
 ### token
 since i didn't implement login yet, you'll need to get the token manually:
 
-1. go to the Live Tail tab in logs.io web interface
+1. go to the Live Tail tab in logz.io web interface
 1. open developer tools / inspect
 1. go to Network tab
 1. find a request that's called `live-tail`
