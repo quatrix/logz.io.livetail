@@ -1,0 +1,12 @@
+{
+  "name": "logz_io_live_tail_cli",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "argparse": "^1.0.10",
+    "fs-extra": "^9.0.0",
+    "node-fetch": "^2.6.0",
+    "ws": "^7.3.0"
+  }
+}
