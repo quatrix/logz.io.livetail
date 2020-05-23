@@ -94,3 +94,4 @@ node src/livetail.js -c accounts/my_account.json --is env:prod
 - [ ] `is_exists` / `is_not_exists` filters
 - [ ] output formatting, being able to pass a format/template 
 - [ ] loading filters from configuration file (sort of saved filters)
+- [ ] ability to install package and get a executable `livetail` 
