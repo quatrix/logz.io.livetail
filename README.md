@@ -1,22 +1,25 @@
-# logz.io live tail cli (UNOFFICIAL)
+# Logz.io Live-Tail CLI (UNOFFICIAL)
 
-CLI tool to get a live tail of log events from logz.io Live Tail service
+CLI tool to get a live tail of log events from https://logz.io Live Tail service
 
-## installation
+## Installation
+
+```bash
 yarn install
+```
 
-## usage
+## Usage
 
-### token
-since i didn't implement login yet, you'll need to get the token manually:
+### Getting Auth Token
+Since i didn't implement login yet, you'll need to get the token manually:
 
-1. go to the Live Tail tab in logz.io web interface
-1. open developer tools / inspect
-1. go to Network tab
-1. find a request that's called `live-tail`
-1. from the headers copy the `X-Auth-Token` header
-1. from the cookie copy the `logz-lastAuthToken` field
-1. create a json file with the following format and save it as `account_name.json` (replace place holders with your values) 
+1. Go to the Live Tail tab in https://logz.io web interface
+1. Open developer tools / inspect
+1. Go to Network tab
+1. Find a request that's called `live-tail`
+1. From the headers copy the `X-Auth-Token` header
+1. From the cookie copy the `logz-lastAuthToken` field
+1. Create a json file with the following format and save it as `account_name.json` (replace place holders with your values) 
 
 ```json
 {
@@ -25,7 +28,7 @@ since i didn't implement login yet, you'll need to get the token manually:
 }
 ```
 
-### help
+### Help
 
 
 ```
@@ -50,29 +53,20 @@ Optional arguments:
   --is IS               filter where field == value [syntax: field:value0,value1,value2]
 ```
 
-### limitations
 
-* corrently only `parsed` mode is implemented (but very easy to implement regex mode)
-* if there are no new messages, it will quit, need to add some polling mechanism (logs.io actually send an event when you should poll next)
-* `is` some field
-* `is_not` some field
-* missing: exists
-* missing: not_exists
-* etc...
-
-### output fields
-by default the output fields are `@timestamp` and `message`, you can specify multiple `-o field` and these fields will be added
-(when you add fields, you need to also add message)
+### Output Fields
+By default the output fields are `@timestamp` and `message`, you can specify multiple `-o field` and these fields will be added (When you add fields, you need to also add message)
 
 
 ```bash
 node src/livetail.js -c accounts/my_account.json -o module -o env -o level
 ```
 
+### Filters
 
-#### is_not
+#### is_not 
 
-to filter out messages that have specific values in a given field
+To filter out messages that have specific values in a given field
 
 
 ```bash
@@ -84,10 +78,19 @@ node src/livetail.js -c accounts/my_account.json --is_not env:staging,cd
 ```
 
 
-#### is
+#### is 
 
-same as `is_not` but reversed
+Same as `is_not` but reversed
 
 ```bash
 node src/livetail.js -c accounts/my_account.json --is env:prod
 ```
+
+### TODO
+
+- [ ] Implement `login` and getting a token
+- [ ] Polling for events after websocket closes 
+- [ ] `REGEX` mode
+- [ ] `is_exists` / `is_not_exists` filters
+- [ ] output formatting, being able to pass a format/template 
+- [ ] loading filters from configuration file (sort of saved filters)
